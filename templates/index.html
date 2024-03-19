@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Farm Fare</title>
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700&display=swap" rel="stylesheet">
+
+
+    <!-- Compiled and minified JavaScript -->
+    <style>
+      body {
+      background-color:darkcyan; /* Change this color to your desired background color */
+      margin: 0;
+      padding: 0;
+      }
+      
+        div.main {
+            padding: 5px 50px 75px 50px;
+        }
+
+        span,img {
+            vertical-align: middle;
+         }
+
+        .brand-logo > span,.brand-logo > img {
+            vertical-align: middle;
+        }
+        h3.card-panel {
+            font-family: 'Poppins';
+        
+            text-align: center;
+        }
+
+        h4 {
+            font-family: 'Poppins', sans-serif;
+           
+            font-style: oblique;
+        }
+        .card {
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+        
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+</head>
+<body class="main">
+  <div>
+
+
+
+    <div class="nav-wrapper"  >
+        <h3 class="card-panel" style="font-family:'Calisto MT';  text-align: center; background-image: url(/static/vegg.png); background-size:contains;" ><br>
+          <img alt="LOGO" src="/static/logo.jfif" height="100px" width="100px" class="rounded-img" style="border-radius: 20px;" />
+         <span style="color:darkcyan;  ">VEGISAGE</span>
+        </h3>
+    </div>
+
+    <script>
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+       }
+      function updateTime(i){
+        $('#time').load('http://localhost:5000/ticker/'+0+ '/' + i);
+      }
+
+      function updateCrop1(i){
+        $('#crop1').load('http://localhost:5000/ticker/'+ 1 + '/' + i);
+      }
+
+      function updatePrice1(i){
+        $('#price1').load('http://localhost:5000/ticker/'+ 2 + '/' + i);
+      }
+
+      function updateChange1(i){
+        $("#change1").attr("src","../static/gain-icon.png");
+        $('#pos-change').load('http://localhost:5000/ticker/'+ 3 + '/'  + i);
+
+      }
+
+      function updateCrop2(i){
+        $('#crop2').load('http://localhost:5000/ticker/'+ 4 + '/'  + i);
+      }
+
+      function updatePrice2(i){
+        $('#price2').load('http://localhost:5000/ticker/'+ 5 + '/'  + i);
+      }
+
+      function updateChange2(i){
+        $("#change2").attr("src","../static/loss-icon.png");
+        $('#neg-change').load('http://localhost:5000/ticker/'+ 6 + '/'  + i);
+
+      }
+    </script>
+
+      <script>
+              var i = 0
+              setInterval(async function(){
+              i = (i+1)%5;
+              updateTime(i);
+
+              updateCrop1(i);
+              await sleep(200);
+
+              updatePrice1(i);
+              await sleep(200);
+
+              updateChange1(i);
+              await sleep(200);
+
+              updateCrop2(i);
+              await sleep(200);
+
+              updatePrice2(i);
+              await sleep(200);
+
+              updateChange2(i);
+              await sleep(200);
+
+              /*
+              setTimeout(updateCrop1(i), 100);
+              setTimeout(updatePrice1(i), 300);
+              setTimeout(updateChange1(i), 500);
+              setTimeout(updateCrop2(i), 700);
+              setTimeout(updatePrice2(i), 800);
+              setTimeout(updateChange2(i), 900);
+              */
+
+              }, 4000);
+            </script>
+    
+  
+
+  <h4  style="text-align: center; font-family: sans-serif; color:purple;">Garden of choices  </h4>
+  <br>
+  <div class="row" >
+
+
+    <div class="col s3" >
+      <a href="http://localhost:5000/commodity/Banana" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper" >
+          <div class="col s3">
+          <img src="https://img.icons8.com/color/48/000000/banana.png" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Banana</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+    
+    <div class="col s3" >
+        <a href="http://localhost:5000/commodity/Beetroot" style="color: #000000">
+        <div class="card grey lighten-4">
+          <div class="card-content row valign-wrapper">
+            <div class="col s3">
+            <img src="https://img.icons8.com/?size=96&id=13299&format=png" width="48" height="48">
+          </div>
+          <div class="col s9">
+            <span class="card-title" >Beetroot</span>
+          </div>
+          </div>
+        </div>
+      </a>
+      </div>
+      
+     <div class="col s3">
+      <a href="http://localhost:5000/commodity/Bittergourd" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=160&id=HLnbk1aUvi3H&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Bitter Gourd</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div> 
+    
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Bottlegourd" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=160&id=alyem7W8c8FF&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Bottle Gourd</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div> 
+    
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Brinjal" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=96&id=DXB2J18f7rfT&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Brinjal</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+    <div class="col s3" style="color: blue;">
+        <a href="http://localhost:5000/commodity/Cabbage" style="color: #000000">
+        <div class="card grey lighten-4">
+          <div class="card-content row valign-wrapper">
+            <div class="col s3">
+            <img src="https://img.icons8.com/?size=96&id=20986&format=png" width="48" height="48">
+          </div>
+          <div class="col s9">
+            <span class="card-title" >Cabbage</span>
+          </div>
+          </div>
+        </div>
+      </a>
+      </div>
+
+      
+      <div class="col s3" style="color: blue;">
+        <a href="http://localhost:5000/commodity/Capsicum" style="color: #000000">
+        <div class="card grey lighten-4">
+          <div class="card-content row valign-wrapper">
+            <div class="col s3">
+            <img src="https://img.icons8.com/?size=96&id=18075&format=png" width="48" height="48">
+          </div>
+          <div class="col s9">
+            <span class="card-title" >Capsicum</span>
+          </div>
+          </div>
+        </div>
+      </a>
+      </div>
+
+      <div class="col s3" style="color: blue;">
+        <a href="http://localhost:5000/commodity/Carrot" style="color: #000000">
+        <div class="card grey lighten-4">
+          <div class="card-content row valign-wrapper">
+            <div class="col s3">
+            <img src="https://img.icons8.com/?size=96&id=6f2WYNoYqbXP&format=png" width="48" height="48">
+          </div>
+          <div class="col s9">
+            <span class="card-title" >Carrot</span>
+          </div>
+          </div>
+        </div>
+      </a>
+      </div>
+
+
+  </div>
+    <div class="row">
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Cassava" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://image.shutterstock.com/image-vector/cassava-vector-icon-260nw-795219799.jpg"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Cassava</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Cauliflower" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=96&id=7Nb215AmyBSa&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title">Cauliflower</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+     <div class="col s3">
+      <a href="http://localhost:5000/commodity/Clusterbeans" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://image.shutterstock.com/image-vector/vector-vegetable-cluster-bean-260nw-765176365.jpg"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Cluster Beans</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div> 
+    
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Coconut" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=96&id=24979&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Coconut</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div> 
+    
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Coriander" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=160&id=1maWPRVpZOHP&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Coriander</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+    <div class="col s3">
+        <a href="http://localhost:5000/commodity/Cucumber" style="color: #000000">
+        <div class="card grey lighten-4">
+          <div class="card-content row valign-wrapper">
+            <div class="col s3">
+            <img src="https://img.icons8.com/?size=160&id=xwkjfI71pdau&format=png"  width="48" height="48">
+          </div>
+          <div class="col s9">
+            <span class="card-title">Cucumber</span>
+          </div>
+          </div>
+        </div>
+      </a>
+      </div>
+  
+
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Drumstick" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://www.shutterstock.com/shutterstock/photos/1663025998/display_1500/stock-vector-moringa-oleifera-isolated-on-white-background-seed-pods-drumstick-tree-vector-illustration-of-1663025998.jpg"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title">Drumstick</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+     <div class="col s3">
+      <a href="http://localhost:5000/commodity/Elephantyam" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.freepik.com/free-vector/hand-drawn-tapioca_23-2148696147.jpg?w=740&t=st=1703403418~exp=1703404018~hmac=9d369d94418a2f752fa1fe61e1b44de5b72fe864eeb68e69c42ed56c3583aa67"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Elephant Yam</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div> 
+
+
+    <div class="col s3">
+        <a href="http://localhost:5000/commodity/Frenchbeans" style="color: #000000">
+        <div class="card grey lighten-4">
+          <div class="card-content row valign-wrapper">
+            <div class="col s3">
+            <img src="https://image.shutterstock.com/image-vector/seamless-background-pods-green-bean-260nw-1054664003.jpg"  width="48" height="48">
+          </div>
+          <div class="col s9">
+            <span class="card-title" >French Beans</span>
+          </div>
+          </div>
+        </div>
+      </a>
+      </div> 
+
+      <div class="col s3">
+        <a href="http://localhost:5000/commodity/Greenchilli" style="color: #000000">
+        <div class="card grey lighten-4">
+          <div class="card-content row valign-wrapper">
+            <div class="col s3">
+            <img src="https://img.icons8.com/?size=160&id=MAL19pOvgTNQ&format=png"  width="48" height="48">
+          </div>
+          <div class="col s9">
+            <span class="card-title" >Green Chilli</span>
+          </div>
+          </div>
+        </div>
+      </a>
+      </div> 
+
+     
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Ivygourd" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=96&id=20758&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Ivy Gourd</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+    
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Kidneybeans" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=100&id=UQ2yn33vpV2f&format=png" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Kidney Beans</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+  
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Ladiesfinger" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://image.shutterstock.com/image-vector/colored-ladies-finger-vegetablevector-drawing-260nw-425197684.jpg"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Ladies Finger</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+     <div class="col s3">
+      <a href="http://localhost:5000/commodity/Lemon" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=96&id=YQLIPamA_Xhd&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Lemon</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+    
+    
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Mint" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=96&id=rwvFV6ECv3E0&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title">Mint</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div> 
+    
+
+
+    <div class="col s3">
+        <a href="http://localhost:5000/commodity/Onion" style="color: #000000">
+        <div class="card grey lighten-4">
+          <div class="card-content row valign-wrapper">
+            <div class="col s3">
+            <img src="https://img.icons8.com/?size=96&id=oVuQLxTagzph&format=png"  width="48" height="48">
+          </div>
+          <div class="col s9">
+            <span class="card-title" >Onion</span>
+          </div>
+          </div>
+        </div>
+      </a>
+      </div> 
+      
+    
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Papaya" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=100&id=62098&format=png"  width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Papaya</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Pumpkin" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=100&id=1655&format=png" width="48" height="48" >
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Pumpkin</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+
+     <div class="col s3">
+      <a href="http://localhost:5000/commodity/Radish" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=80&id=37549&format=png" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Radish</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div> 
+    
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Ridgegourd" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://www.shutterstock.com/image-vector/vegetable-ridged-gourd-bottle-260nw-2190526043.jpg" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Ridge Gourd</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div> 
+    
+    
+    
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Snakegourd" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://www.shutterstock.com/image-vector/vector-illustration-snake-gourd-trichosanthes-600w-2256087869.jpg" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Snake Gourd</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Sorrel" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=96&id=XLjMk0hshjcG&format=png" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Sorrel</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+     <div class="col s3">
+      <a href="http://localhost:5000/commodity/Spinach" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=96&id=qIF4XIx-ZSGt&format=png" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Spinach</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+    
+    
+
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Sweetcorn" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=96&id=13285&format=png" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Sweet Corn</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+
+
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Sweetpotato" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=80&id=31735&format=png" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Sweet Potato</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+
+
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Taro" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=160&id=70506&format=png" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >Taro</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+    
+    <div class="col s3">
+        <a href="http://localhost:5000/commodity/Tomato" style="color: #000000">
+        <div class="card grey lighten-4">
+          <div class="card-content row valign-wrapper">
+            <div class="col s3">
+            <img src="https://img.icons8.com/?size=96&id=18102&format=png" width="48" height="48">
+          </div>
+          <div class="col s9">
+            <span class="card-title" >Tomato</span>
+          </div>
+          </div>
+        </div>
+      </a>
+      </div>
+
+
+    <div class="col s3">
+      <a href="http://localhost:5000/commodity/Yellowcucumber" style="color: #000000">
+      <div class="card grey lighten-4">
+        <div class="card-content row valign-wrapper">
+          <div class="col s3">
+          <img src="https://img.icons8.com/?size=160&id=B8Dp50E6WaWo&format=png" width="48" height="48">
+        </div>
+        <div class="col s9">
+          <span class="card-title" >YellowCucumber</span>
+        </div>
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+
+
+  </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $('.slider').slider({full_width :true});
+  });
+</script>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</html>

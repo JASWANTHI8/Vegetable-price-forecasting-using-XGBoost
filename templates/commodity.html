@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vegisage</title>
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+     <style>
+        div.main {
+            padding: 5px 50px 75px 50px;
+        }
+        .card-content[h3]
+        {
+          color:red;
+        }
+    </style>
+        
+</head>
+<body class="main" style="background-color: #85dcb8;">
+  <div>
+    <div class="nav-wrapper">
+        <h3 class="card-panel" style="font-family:'Calisto MT';  text-align: center; background-image: url(/static/vegg.png); background-size:contains;" ><br>
+          <img alt="LOGO" src="/static/logo.jfif" height="100px" width="100px" class="rounded-img" style="border-radius: 20px;" />
+         <span style="color:darkcyan;  ">VEGISAGE</span>
+        </h3>
+    </div>
+    <h2 class="header">{{context.name}}</h2>
+    <div class="row" style="background-color: pink;">
+        <div class="col s25 m25">
+      <div class="card horizontal medium">
+        <div class="card-image">
+          <img src={{context.image_url}}>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content" style="background-color: #c38d9e;">
+               <h3>Health Benefits</h3>
+                <td><b>{{context.prime_loc}}</b></td>
+              </tr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="row">    
+    <div class="col s4">
+      <h5>Forecast Trends for the next 12 months</h5>
+     
+      <table class="striped" style="border: 2px solid black; border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr style="background-color: yellow; border: 1px solid limegreen;">
+                <th style="border: 1px solid  black; padding: 8px; text-align: left;">Month</th>
+                <th style="border: 1px solid black; padding: 8px; text-align: left;">
+                    {% if context.name in ['Cauliflower', 'Bottlegourd', 'Snakegourd', 'Banana', 'Drumstick', 'Coriander', 'Mint', 'Radish', 'Coconut', 'Sweetcorn'] %}
+                        Price(per unit)
+                    {% else %}
+                        Price(per kg)
+                    {% endif %}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in context.forecast_values %}
+                <tr style="border: 1px solid darkgrey;">
+                    <td style="border: 1px solid black; padding: 8px;">{{item[0]}}</td>
+                    <td style="border: 1px solid black; padding: 8px;">₹{{item[1]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
